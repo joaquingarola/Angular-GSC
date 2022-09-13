@@ -1,0 +1,24 @@
+{
+  "name": "angular-gsc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaquingarola/Angular-GSC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaquingarola/Angular-GSC/issues"
+  },
+  "homepage": "https://github.com/joaquingarola/Angular-GSC#readme",
+  "devDependencies": {
+    "typescript": "^4.8.3"
+  }
+}

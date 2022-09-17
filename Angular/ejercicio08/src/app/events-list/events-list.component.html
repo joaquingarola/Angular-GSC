@@ -1,0 +1,22 @@
+<div>
+  <h3>Listado de todos los eventos disponibles</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Evento</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Dirección</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ev of events">
+        <td>{{ev.name}}</td>
+        <td>{{ev.date}}</td>
+        <td>{{ev.time}}</td>
+        <td *ngIf="ev.location">{{ev.location.address}}, {{ev.location.city}}, {{ev.location.country}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

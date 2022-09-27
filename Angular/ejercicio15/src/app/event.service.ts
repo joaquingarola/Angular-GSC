@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class EventService {
+export interface Event {
+  id: number,
+	name: string;
+	date: string;
+	time: string;
+	location: {
+		address: string;
+		city: string;
+		country: string;
+	};
+}
 
-  events = [
+const events: Event[] = [
     {
+      id: 1,
       name: 'Angular Connect',
       date: '9/26/2036',
       time: '10am',
@@ -17,6 +25,7 @@ export class EventService {
       }
     },
     {
+      id: 2,
       name: 'ng-nl',
       date: '4/15/2037',
       time: '9am',
@@ -27,6 +36,7 @@ export class EventService {
       }
     },
     {
+      id: 3,
       name: 'ng-conf 2037',
       date: '4/15/2037',
       time: '9am',
@@ -37,6 +47,7 @@ export class EventService {
       }
     },
     {
+      id: 4,
       name: 'UN Angular Summit',
       date: '6/10/2037',
       time: '8am',
@@ -45,8 +56,21 @@ export class EventService {
         city: 'New York',
         country: 'USA'
       }
-    },
+    }
   ]
 
+@Injectable({
+  providedIn: 'root'
+})
+export class EventService {
+
   constructor() { }
+
+  getAll(): Event[] {
+		return events;
+	}
+
+  getById(id: string): Event | undefined {
+    return events.find(e => e.id === +id);
+  }
 }

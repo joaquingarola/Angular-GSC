@@ -9,4 +9,12 @@ label {
 .form-group {
     margin-top: 5px;
 }
+
+.error{
+    color: red;
+    font-weight: 500;
+}
  
+.invalid {
+    border-color: red;
+}

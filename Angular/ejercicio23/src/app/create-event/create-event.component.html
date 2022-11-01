@@ -2,32 +2,39 @@
   <form [formGroup]="eventForm" (ngSubmit)="saveEvent()">
     <div class="form-group">
       <label for="event-name">Nombre del evento:</label>
-      <input id="name" type="text" formControlName="name"/>
+      <input id="name" type="text" formControlName="name" [ngClass]="{ 'invalid': isControlValid('name') }"/>
+      <span class="error" *ngIf="isControlValid('name')"> * Este campo es requerido!</span>
     </div>
     <div class="form-group">
       <label for="date">Fecha: </label>
-      <input id="date" type="text" formControlName="date"/>
+      <input id="date" type="date" formControlName="date" [ngClass]="{ 'invalid': isControlValid('date') }"/>
+      <span class="error" *ngIf="isControlValid('date')"> * Este campo es requerido!</span>
     </div>
     <div class="form-group">
       <label for="time">Hora: </label>
-      <input id="time" type="text" formControlName="time"/>
+      <input id="time" type="time" formControlName="time" [ngClass]="{ 'invalid': isControlValid('time') }"/>
+      <span class="error" *ngIf="isControlValid('time')"> * Este campo es requerido!</span>
     </div>
     <div formGroupName="location">
       <div class="form-group">
         <label for="address">Dirección: </label>
-        <input id="address" type="text" formControlName="address"/>
+        <input id="address" type="text" formControlName="address" [ngClass]="{ 'invalid': isControlValid('location.address') }"/>
+        <span class="error" *ngIf="isControlValid('location.address')"> * Este campo es requerido!</span>
       </div>
       <div class="form-group">
         <label for="city">Ciudad: </label>
-        <input id="city" type="text" formControlName="city"/>
+        <input id="city" type="text" formControlName="city" [ngClass]="{ 'invalid': isControlValid('location.city') }"/>
+        <span class="error" *ngIf="isControlValid('location.city')"> * Este campo es requerido!</span>
       </div>
       <div class="form-group">
         <label for="country">Pais: </label>
-        <input id="country" type="text" formControlName="country"/>
+        <input id="country" type="text" formControlName="country" [ngClass]="{ 'invalid': isControlValid('location.country') || isCountryValid('location.country')}"/>
+        <span class="error" *ngIf="isControlValid('location.country')"> * Este campo es requerido!</span>
+        <span class="error" *ngIf="isCountryValid('location.country')"> * El país debe tener dos mayúsculas!</span>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="eventForm.invalid" >Guardar</button>
     <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
   </form>
 </div>
